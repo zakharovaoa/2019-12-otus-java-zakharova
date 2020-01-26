@@ -33,7 +33,7 @@ public class Main {
     public static void main(String... args) {
         List<Integer> example = new ArrayList<>();
         int min = 0;
-        int max = 999;
+        int max = 99;
         for (int i = min; i < max + 1; i++) {
             example.add(i);
         }
@@ -42,12 +42,14 @@ public class Main {
         Collections.shuffle(example);
         calcTime(() -> result.addAll(Lists.reverse(example)));
         System.out.println(result);
+        HelloOtus.PrintLists();
     }
 
     private static void calcTime(Runnable runnable) {
         long startTime = System.nanoTime();
         for (int i = 0; i < MEASURE_COUNT; i++) {
             runnable.run();
+            System.out.println(i);
         }
         long finishTime = System.nanoTime();
         long timeNs = (finishTime - startTime) / MEASURE_COUNT;
